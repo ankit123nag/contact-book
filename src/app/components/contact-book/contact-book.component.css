@@ -1,0 +1,18 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 120px;
+}
+.img-thumbnail{
+    width: 200px;
+    height: 200px;
+}
+.list-user-details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.card{
+    box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.4);
+}

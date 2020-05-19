@@ -1,0 +1,52 @@
+<div class="container">
+
+    <nav class="navbar fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">Contact Book</a>
+
+        <div class="col-4">
+            <input type="text" class="form-control" placeholder="Search By Name or Email" (keyup)="searchUser($event)">
+        </div>
+
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" (change)=toggleView(isChecked) id="customSwitches">
+            <label class="custom-control-label card-text" for="customSwitches">Grid View</label>
+        </div>
+
+        <div class="col-auto my-1">
+            <select class="custom-select mr-sm-2" (change)="sortData($event)" style="width: 18rem;"
+                id="inlineFormCustomSelect">
+                <option value="">Sort By...</option>
+                <option value="name">Name</option>
+                <option value="email">Email</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="row" *ngIf="!toggle">
+
+        <div class="card m-4" style="width: 18rem;" *ngFor="let user of userData.data">
+            <img class="card-img-top" src={{user.avatar}} alt="Profile Picture">
+            <div class="card-body">
+                <h5>{{user.first_name}} {{user.last_name}}</h5>
+                <p class="card-text text-muted">Email: {{user.email}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="toggle">
+        <div class="card w-75 m-2 list-user-details" *ngFor="let user of userData.data">
+            <img class="img-thumbnail" src={{user.avatar}} alt="Profile Picture">
+            <div class="card-body m-3">
+                <h5>{{user.first_name}} {{user.last_name}}</h5>
+                <p class="card-text text-muted">Email: {{user.email}}</p>
+            </div>
+        </div>
+    </div>
+
+    <nav aria-label="Page navigation example" class="justify-content-center d-flex">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link">Prev</a></li>
+            <li class="page-item"><a class="page-link">Next</a></li>
+        </ul>
+    </nav>
+</div>
