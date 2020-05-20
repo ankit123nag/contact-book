@@ -24,7 +24,7 @@
 
     <div class="row" *ngIf="!toggle">
 
-        <div class="card m-4" style="width: 18rem;" *ngFor="let user of userData.data">
+        <div class="card m-4" style="width: 18rem;" *ngFor="let user of userData">
             <img class="card-img-top" src={{user.avatar}} alt="Profile Picture">
             <div class="card-body">
                 <h5>{{user.first_name}} {{user.last_name}}</h5>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="row" *ngIf="toggle">
-        <div class="card w-75 m-2 list-user-details" *ngFor="let user of userData.data">
+        <div class="card w-75 m-2 list-user-details" *ngFor="let user of userData">
             <img class="img-thumbnail" src={{user.avatar}} alt="Profile Picture">
             <div class="card-body m-3">
                 <h5>{{user.first_name}} {{user.last_name}}</h5>

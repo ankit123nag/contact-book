@@ -17,8 +17,8 @@ export class ContactBookComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getContactData().subscribe((data) => {
-      this.userData = data;
-      this.userList = Object.assign([], data);
+      this.userData = data["data"];
+      this.userList = Object.assign([], data["data"]);
     }, (error) => {
       console.log(error);
     })
@@ -30,7 +30,7 @@ export class ContactBookComponent implements OnInit {
 
   searchUser(event) {
     let searchText = event.target.value.toLowerCase();
-    this.userData.data = this.userList.data.filter((user) => {
+    this.userData = this.userList.filter((user) => {
       return (user.first_name.toLowerCase().includes(searchText) || user.last_name.toLowerCase().includes(searchText) || user.email.toLowerCase().includes(searchText));
     });
   }
@@ -38,14 +38,14 @@ export class ContactBookComponent implements OnInit {
   sortData(event?) {
     let value = event.target.value;
     if (value === "name") {
-      this.userData.data.sort((a, b) => {
+      this.userData.sort((a, b) => {
         if (a.first_name.toLowerCase() < b.first_name.toLowerCase())
           return -1;
         if (a.first_name.toLowerCase() < b.first_name.toLowerCase())
           return 1
       });
     } else if (value === "email") {
-      this.userData.data.sort((a, b) => {
+      this.userData.sort((a, b) => {
         if (a.email.toLowerCase() < b.email.toLowerCase())
           return -1;
         if (a.email.toLowerCase() < b.email.toLowerCase())
