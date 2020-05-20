@@ -53,7 +53,7 @@ export class ContactBookComponent implements OnInit {
       });
     } else {
       this.dataService.getContactData().subscribe((data) => {
-        this.userData = data;
+        this.userData = data["data"];
       }, (error) => {
         console.log(error);
       })
